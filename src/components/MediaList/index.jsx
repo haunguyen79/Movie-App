@@ -50,9 +50,10 @@ const MediaList = ({ title, tabs }) => {
         </ul>
       </div>
 
-      <div className="lg:gird-cols-6 grid grid-cols-2 gap-4 lg:gap-6 sm:grid-cols-4">
+      <div className="lg:gird-cols-6 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:gap-6">
         {mediaList.map((media) => (
           <MovieCard
+            id={media.id}
             key={media.id}
             title={media.title || media.name}
             releaseDay={media.release_date || media.first_air_date}
