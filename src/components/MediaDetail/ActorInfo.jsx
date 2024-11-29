@@ -12,7 +12,7 @@ const ActorInfo = ({ id, name, character, profilePath }) => {
       <div className="p-3">
         <p className="font-bold">{name}</p>
         <p>{character}</p>
-        <p>18</p>
+        {/* <p>18</p> */}
       </div>
     </div>
   );
