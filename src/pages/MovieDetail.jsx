@@ -4,14 +4,15 @@ import Loading from "@components/Loading";
 import Banner from "@components/MediaDetail/Banner";
 import ActorList from "@components/MediaDetail/ActorList";
 import RelatedMediaList from "@components/MediaDetail/RelatedMediaList";
+import MovieInformation from "@components/MediaDetail/MovieInformation";
 
 const MovieDetail = () => {
   const { id } = useParams(); // Lấy tham số userId từ URL
   const [movieInfo, setMovieInfo] = useState({});
   const [relatedMovie, setRelatedMovie] = useState([]);
   const [isLoading, setIsloading] = useState(false);
-  const [isRelatedMovieListLoading, setIsRelatedMovieListLoading] =
-    useState(false);
+  // const [isRelatedMovieListLoading, setIsRelatedMovieListLoading] =
+  //   useState(false);
   // console.log({ params });
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const MovieDetail = () => {
   }, [id]);
 
   useEffect(() => {
-    setIsRelatedMovieListLoading(true);
+    // setIsRelatedMovieListLoading(true);
     fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations`, {
       method: "GET",
       headers: {
@@ -55,13 +56,13 @@ const MovieDetail = () => {
         console.log({ recommendations: data });
         // setMovieInfo(data);
         const currentRelatedMovies = (data.results || []).slice(0, 12);
-        setRelatedMovie(currentRelatedMovies)
+        setRelatedMovie(currentRelatedMovies);
       })
       .catch((err) => {
         console.error(err);
       })
       .finally(() => {
-        setIsRelatedMovieListLoading(false);
+        // setIsRelatedMovieListLoading(false);
       });
   }, [id]);
 
@@ -75,13 +76,13 @@ const MovieDetail = () => {
     <div>
       <Banner mediaInfo={movieInfo} />
       <div className="bg-black text-[1.2vw] text-white">
-        <div className="mx-auto flex max-w-screen-xl gap-6 px-6 py-10">
+        <div className="mx-auto flex max-w-screen-xl gap-6 sm:gap-8 px-6 py-10">
           <div className="flex-[2]">
             <ActorList actors={movieInfo.credits?.cast || []} />
             <RelatedMediaList mediaList={relatedMovie} />
           </div>
           <div className="flex-1">
-            <p className="mb-4 text-[1.4vw] font-bold">Information</p>
+            <MovieInformation movieInfo={movieInfo} />
           </div>
         </div>
       </div>
