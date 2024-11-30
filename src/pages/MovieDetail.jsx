@@ -47,8 +47,7 @@ const MovieDetail = () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2OTlhYmI5NTI3M2IwNGE3MDc5YTQ1ODMyOWNmZmE4NCIsIm5iZiI6MTczMDI0OTkxNy40MjAxNDM2LCJzdWIiOiI2NzIxODM0NjgyNmZlNTc5OWNjNGExOTgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.zeTMNZgeFRbZ1q3UAHn-g7tlxwYpm53P1Fhn4spjQmY",
+        Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
       },
     })
       .then(async (res) => {
@@ -76,7 +75,7 @@ const MovieDetail = () => {
     <div>
       <Banner mediaInfo={movieInfo} />
       <div className="bg-black text-[1.2vw] text-white">
-        <div className="mx-auto flex max-w-screen-xl gap-6 sm:gap-8 px-6 py-10">
+        <div className="mx-auto flex max-w-screen-xl gap-6 px-6 py-10 sm:gap-8">
           <div className="flex-[2]">
             <ActorList actors={movieInfo.credits?.cast || []} />
             <RelatedMediaList mediaList={relatedMovie} />
