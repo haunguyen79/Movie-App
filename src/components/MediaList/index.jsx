@@ -1,31 +1,37 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MovieCard from "@components/MovieCard";
+import useFetch from "@hooks/useFetch";
 
 const MediaList = ({ title, tabs }) => {
-  const [mediaList, setMediaList] = useState([]);
+  // const [mediaList, setMediaList] = useState([]);
   const [activeTabId, setActiveTabId] = useState(tabs[0]?.id);
 
-  useEffect(() => {
-    const url = tabs.find((tab) => tab.id === activeTabId)?.url;
+  const url = tabs.find((tab) => tab.id === activeTabId)?.url;
 
-    if (url) {
-      fetch(url, {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2OTlhYmI5NTI3M2IwNGE3MDc5YTQ1ODMyOWNmZmE4NCIsIm5iZiI6MTczMDI0OTkxNy40MjAxNDM2LCJzdWIiOiI2NzIxODM0NjgyNmZlNTc5OWNjNGExOTgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.zeTMNZgeFRbZ1q3UAHn-g7tlxwYpm53P1Fhn4spjQmY",
-        },
-      }).then(async (res) => {
-        const data = await res.json();
-        console.log({ data });
+  const { data } = useFetch({ url });
+  const mediaList = (data.results || []).slice(0, 12);
 
-        const trendingMediaList = data.results.splice(0, 12);
-        console.log(trendingMediaList);
-        setMediaList(trendingMediaList);
-      });
-    }
-  }, [activeTabId, tabs]);
+  console.log({mediaList})
+
+  // useEffect(() => {
+  //   if (url) {
+  //     fetch(url, {
+  //       method: "GET",
+  //       headers: {
+  //         accept: "application/json",
+  //         Authorization:
+  //           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2OTlhYmI5NTI3M2IwNGE3MDc5YTQ1ODMyOWNmZmE4NCIsIm5iZiI6MTczMDI0OTkxNy40MjAxNDM2LCJzdWIiOiI2NzIxODM0NjgyNmZlNTc5OWNjNGExOTgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.zeTMNZgeFRbZ1q3UAHn-g7tlxwYpm53P1Fhn4spjQmY",
+  //       },
+  //     }).then(async (res) => {
+  //       const data = await res.json();
+  //       console.log({ data });
+
+  //       const trendingMediaList = data.results.slice(0, 12);
+  //       console.log(trendingMediaList);
+  //       setMediaList(trendingMediaList);
+  //     });
+  //   }
+  // }, [activeTabId, tabs]);
 
   return (
     <div className="bg-black px-8 py-10 text-[1.2vw] text-white">

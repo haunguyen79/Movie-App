@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Loading from "@components/Loading";
 import Banner from "@components/MediaDetail/Banner";
 import ActorList from "@components/MediaDetail/ActorList";
@@ -10,7 +10,7 @@ import useFetch from "@hooks/useFetch";
 const MovieDetail = () => {
   const { id } = useParams(); // Lấy tham số userId từ URL
   // const [movieInfo, setMovieInfo] = useState({});
-  const [relatedMovie, setRelatedMovie] = useState([]);
+  // const [relatedMovie, setRelatedMovie] = useState([]);
   // const [isLoading, setIsloading] = useState(false);
   // const [isRelatedMovieListLoading, setIsRelatedMovieListLoading] =
   //   useState(false);
@@ -48,29 +48,40 @@ const MovieDetail = () => {
 
   console.log({ movieInfo, isLoading });
 
-  useEffect(() => {
-    // setIsRelatedMovieListLoading(true);
-    fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations`, {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
-      },
-    })
-      .then(async (res) => {
-        const data = await res.json();
-        console.log({ recommendations: data });
-        // setMovieInfo(data);
-        const currentRelatedMovies = (data.results || []).slice(0, 12);
-        setRelatedMovie(currentRelatedMovies);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        // setIsRelatedMovieListLoading(false);
-      });
-  }, [id]);
+  const {
+    data: recommendationsResponse,
+    isLoading: isRelatedMovieListLoading,
+  } = useFetch({
+    url: `/movie/${id}/recommendations`,
+  });
+
+  const relatedMovie = recommendationsResponse.results || [];
+
+  console.log({ movieInfo, relatedMovie, isLoading });
+
+  // useEffect(() => {
+  //   // setIsRelatedMovieListLoading(true);
+  //   fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations`, {
+  //     method: "GET",
+  //     headers: {
+  //       accept: "application/json",
+  //       Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
+  //     },
+  //   })
+  //     .then(async (res) => {
+  //       const data = await res.json();
+  //       console.log({ recommendations: data });
+  //       // setMovieInfo(data);
+  //       const currentRelatedMovies = (data.results || []).slice(0, 12);
+  //       setRelatedMovie(currentRelatedMovies);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     })
+  //     .finally(() => {
+  //       // setIsRelatedMovieListLoading(false);
+  //     });
+  // }, [id]);
 
   if (isLoading) {
     return <Loading />;
@@ -85,7 +96,10 @@ const MovieDetail = () => {
         <div className="mx-auto flex max-w-screen-xl gap-6 px-6 py-10 sm:gap-8">
           <div className="flex-[2]">
             <ActorList actors={movieInfo.credits?.cast || []} />
-            <RelatedMediaList mediaList={relatedMovie} />
+            <RelatedMediaList
+              mediaList={relatedMovie}
+              isLoading={isRelatedMovieListLoading}
+            />
           </div>
           <div className="flex-1">
             <MovieInformation movieInfo={movieInfo} />
