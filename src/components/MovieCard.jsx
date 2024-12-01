@@ -11,8 +11,10 @@ const MovieCard = ({ id, title, releaseDay, poster, point, mediaType }) => {
           </p>
         )}
         <img
-          className="rounded-lg"
+          className="rounded-lg w-full"
           src={`https://image.tmdb.org/t/p/w500${poster}`}
+          width= {210}
+          height = {300}
         />
         <div className="relative -top-[1.5vw] px-4">
           <CircularProgressBar
