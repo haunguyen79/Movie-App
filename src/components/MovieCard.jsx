@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CircularProgressBar from "./CircularProgressBar";
+import Image from "./Image";
 
 const MovieCard = ({ id, title, releaseDay, poster, point, mediaType }) => {
   return (
@@ -10,12 +11,14 @@ const MovieCard = ({ id, title, releaseDay, poster, point, mediaType }) => {
             TV Show
           </p>
         )}
-        <img
-          className="rounded-lg w-full"
+
+        <Image
+          className="w-full rounded-lg"
           src={`https://image.tmdb.org/t/p/w500${poster}`}
-          width= {210}
-          height = {300}
+          width={210}
+          height={300}
         />
+
         <div className="relative -top-[1.5vw] px-4">
           <CircularProgressBar
             percent={Math.round(point * 10)}

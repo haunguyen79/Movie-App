@@ -1,7 +1,9 @@
-const ActorInfo = ({ id, name, character, profilePath }) => {
+import ImageComponent from "@components/Image";
+
+const ActorInfo = ({ name, character, profilePath }) => {
   return (
     <div className="rounded-lg border border-slate-300 bg-black shadow-sm">
-      <img
+      <ImageComponent
         className="rounded-lg w-full"
         src={
           profilePath

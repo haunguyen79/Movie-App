@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CircularProgressBar from "../CircularProgressBar";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { groupBy } from "lodash";
+import ImageComponent from "@components/Image";
 
 const Banner = ({ mediaInfo }) => {
   const certification = (
@@ -20,13 +21,13 @@ const Banner = ({ mediaInfo }) => {
   console.log({ crews, groupedCrews });
   return (
     <div className="relative overflow-hidden text-white shadow-sm shadow-slate-800">
-      <img
+      <ImageComponent
         className="absolute inset-0 h-auto w-screen brightness-[.2]"
         src={`https://image.tmdb.org/t/p/original${mediaInfo.backdrop_path}`}
       />
       <div className="relative mx-auto flex max-w-screen-xl gap-6 px-6 py-10 lg:gap-8">
         <div className="flex-1">
-          <img
+          <ImageComponent
             width={600}
             height={900}
             src={`https://media.themoviedb.org/t/p/w600_and_h900_bestv2${mediaInfo.poster_path}`}
