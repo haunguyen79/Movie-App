@@ -31,6 +31,15 @@ const TVShowDetail = () => {
       (result) => result.iso_3166_1 === "US",
     )?.rating || [];
 
+  const crews = (tvInfo.aggregate_credits?.crew || [])
+    .filter((crew) => {
+      const jobs = (crew.jobs || []).map((j) => j.job);
+      return ["Director", "Writer"].some((job) => jobs.find((j) => j === job));
+    })
+    .map((crew) => ({ id: crew.id, job: crew.jobs[0].job, name: crew.name }));
+
+  console.log({ crews });
+
   if (isLoading) {
     return <Loading />;
   }
@@ -42,7 +51,7 @@ const TVShowDetail = () => {
         backdropPath={tvInfo.backdrop_path}
         posterPath={tvInfo.poster_path}
         certification={certification}
-        // crews={crews}
+        crews={crews}
         genres={tvInfo.genres}
         releaseDate={tvInfo.first_air_date}
         point={tvInfo.vote_average}

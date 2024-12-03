@@ -17,7 +17,8 @@ const Banner = ({
 }) => {
  
   const groupedCrews = groupBy(crews, "job");
-  console.log({ crews, groupedCrews });
+  // console.log({ crews, groupedCrews });
+  
   return (
     <div className="relative overflow-hidden text-white shadow-sm shadow-slate-800">
       <ImageComponent
