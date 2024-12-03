@@ -15,16 +15,14 @@ const TVShowDetail = () => {
 
   console.log({ tvInfo, isLoading });
 
-  const {
-    data: recommendationsResponse,
-    isLoading: isRelatedMovieListLoading,
-  } = useFetch({
-    url: `/tv/${id}/recommendations`,
-  });
+  const { data: recommendationsResponse, isLoading: isRecommandationLoading } =
+    useFetch({
+      url: `/tv/${id}/recommendations`,
+    });
 
-  const relatedMovie = recommendationsResponse.results || [];
+  const relatedTVShow = recommendationsResponse.results || [];
 
-  console.log({ tvInfo, relatedMovie, isLoading });
+  console.log({ tvInfo, relatedTVShow, isLoading });
 
   const certification =
     (tvInfo.content_ratings?.results || []).find(
@@ -36,6 +34,7 @@ const TVShowDetail = () => {
       const jobs = (crew.jobs || []).map((j) => j.job);
       return ["Director", "Writer"].some((job) => jobs.find((j) => j === job));
     })
+    .slice(0, 10)
     .map((crew) => ({ id: crew.id, job: crew.jobs[0].job, name: crew.name }));
 
   console.log({ crews });
@@ -68,8 +67,8 @@ const TVShowDetail = () => {
               }))}
             />
             <RelatedMediaList
-              mediaList={relatedMovie}
-              isLoading={isRelatedMovieListLoading}
+              mediaList={relatedTVShow}
+              isLoading={isRecommandationLoading}
             />
           </div>
           <div className="flex-1">

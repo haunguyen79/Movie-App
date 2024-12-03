@@ -22,7 +22,7 @@ const Banner = ({
   return (
     <div className="relative overflow-hidden text-white shadow-sm shadow-slate-800">
       <ImageComponent
-        className="absolute inset-0 h-auto w-screen brightness-[.2]"
+        className="absolute inset-0 h-auto w-full brightness-[.2] aspect-video"
         src={`https://image.tmdb.org/t/p/original${backdropPath}`}
       />
       <div className="relative mx-auto flex max-w-screen-xl gap-6 px-6 py-10 lg:gap-8">
