@@ -59,6 +59,18 @@ const MovieDetail = () => {
 
   console.log({ movieInfo, relatedMovie, isLoading });
 
+  const certification = (
+    (movieInfo.release_dates?.results || []).find(
+      (result) => result.iso_3166_1 === "US",
+    )?.release_dates || []
+  ).find((releaseDate) => releaseDate.certification)?.certification;
+
+  const crews = (movieInfo.credits?.crew || [])
+    .filter((crew) => ["Director", "Screenplay", "Writer"].includes(crew.job))
+    .map((crew) => ({ id: crew.id, job: crew.job, name: crew.name }));
+
+  console.log({ crews });
+
   // useEffect(() => {
   //   // setIsRelatedMovieListLoading(true);
   //   fetch(`https://api.themoviedb.org/3/movie/${id}/recommendations`, {
@@ -91,7 +103,17 @@ const MovieDetail = () => {
 
   return (
     <div>
-      <Banner mediaInfo={movieInfo} />
+      <Banner
+        title={movieInfo.title}
+        backdropPath={movieInfo.backdrop_path}
+        posterPath={movieInfo.poster_path}
+        certification={certification}
+        crews={crews}
+        genres={movieInfo.genres}
+        releaseDate={movieInfo.release_date}
+        point={movieInfo.vote_average}
+        overview={movieInfo.overview}
+      />
       <div className="bg-black text-[1.2vw] text-white">
         <div className="mx-auto flex max-w-screen-xl gap-6 px-6 py-10 sm:gap-8">
           <div className="flex-[2]">
