@@ -4,7 +4,7 @@ import Banner from "@components/MediaDetail/Banner";
 import ActorList from "@components/MediaDetail/ActorList";
 import RelatedMediaList from "@components/MediaDetail/RelatedMediaList";
 import useFetch from "@hooks/useFetch";
-import MovieInformation from "@components/MediaDetail/MovieInformation";
+import TVShowInformation from "@components/MediaDetail/TVShowInformation";
 
 const TVShowDetail = () => {
   const { id } = useParams(); // Lấy tham số userId từ URL
@@ -72,7 +72,7 @@ const TVShowDetail = () => {
             />
           </div>
           <div className="flex-1">
-            <MovieInformation tvInfo={tvInfo} />
+            <TVShowInformation tvInfo={tvInfo} />
           </div>
         </div>
       </div>
