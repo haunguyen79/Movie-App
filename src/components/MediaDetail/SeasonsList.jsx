@@ -7,7 +7,7 @@ const SeasonsList = ({ seasons = [] }) => {
 
   const currentSeasons = isShowMore
     ? seasons.slice(0, 32)
-    : seasons.slice(0, 3);
+    : seasons.slice(0, 2);
 
   return (
     <div className="mt-8 text-[1.3vw]">
@@ -22,7 +22,7 @@ const SeasonsList = ({ seasons = [] }) => {
               height={195}
               width={130}
               className="h-[195px] w-[130px] max-w-screen-xl rounded-lg"
-              src={`https://media.themoviedb.org/t/p/w130_and_h195_face${season.poster_path}`}
+              src={`https://media.themoviedb.org/t/p/w300${season.poster_path}`}
             />
 
             <div className="space-y-1">

@@ -18,9 +18,13 @@ const Banner = ({
   const groupedCrews = groupBy(crews, "job");
   // console.log({ crews, groupedCrews });
 
+  if (!title) return null;
+
   return (
     <div className="relative overflow-hidden bg-black text-white shadow-sm shadow-slate-800">
       <ImageComponent
+        width={1200}
+        height={800}
         className="absolute inset-0 aspect-video h-auto w-full brightness-[.2]"
         src={`https://image.tmdb.org/t/p/original${backdropPath}`}
       />
