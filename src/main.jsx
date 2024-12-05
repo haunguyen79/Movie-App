@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 // import App from "./pages/HomePage.jsx";
@@ -7,6 +6,7 @@ import RootLayout from "@pages/RootLayout";
 import HomePage from "@pages/HomePage";
 import MovieDetail from "@pages/MovieDetail";
 import TVShowDetail from "@pages/TVShowDetail";
+import ModalProvider from "@context/ModalProvider";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/tv/:id",
-        element: <TVShowDetail/>,
+        element: <TVShowDetail />,
       },
     ],
   },
@@ -30,7 +30,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
+  <ModalProvider>
     <RouterProvider router={router} />
-    // {/* <App /> */}
+  </ModalProvider>,
+  // {/* <App /> */}
   // </StrictMode>,
 );
