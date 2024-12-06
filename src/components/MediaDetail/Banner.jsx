@@ -3,6 +3,7 @@ import CircularProgressBar from "../CircularProgressBar";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { groupBy } from "lodash";
 import ImageComponent from "@components/Image";
+import { useModalContext } from "@context/ModalProvider";
 
 const Banner = ({
   title,
@@ -14,7 +15,10 @@ const Banner = ({
   releaseDate,
   point = 0,
   overview,
+  trailerVideoKey
 }) => {
+  const { setIsShowing, setContent } = useModalContext();
+
   const groupedCrews = groupBy(crews, "job");
   // console.log({ crews, groupedCrews });
 
@@ -54,7 +58,18 @@ const Banner = ({
               />
               Rating
             </div>
-            <button>
+            <button
+              onClick={() => {
+                setIsShowing(true);
+                setContent(
+                  <iframe
+                    title="Trailer"
+                    src={`https://www.youtube.com/embed/${trailerVideoKey}`}
+                    className="aspect-video w-[50vw]"
+                  />,
+                );
+              }}
+            >
               <FontAwesomeIcon icon={faPlay} className="mr-1" /> Trailer
             </button>
           </div>

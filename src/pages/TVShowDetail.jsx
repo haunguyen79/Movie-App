@@ -11,7 +11,7 @@ const TVShowDetail = () => {
   const { id } = useParams(); // Lấy tham số userId từ URL
 
   const { data: tvInfo, isLoading } = useFetch({
-    url: `/tv/${id}?append_to_response=content_ratings,aggregate_credits`,
+    url: `/tv/${id}?append_to_response=content_ratings,aggregate_credits,videos`,
   });
 
   console.log({ tvInfo, isLoading });
@@ -58,6 +58,11 @@ const TVShowDetail = () => {
         releaseDate={tvInfo.first_air_date}
         point={tvInfo.vote_average}
         overview={tvInfo.overview}
+        trailerVideoKey={
+          (tvInfo.videos?.results || []).find(
+            (video) => video.type === "Trailer",
+          )?.key
+        }
       />
       <div className="bg-black text-[1.2vw] text-white">
         <div className="mx-auto flex max-w-screen-xl gap-6 px-6 py-10 sm:gap-8">

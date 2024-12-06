@@ -1,7 +1,15 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
+//HOOKS: UseContext
+//B1: Tạo Context
 const ModalContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
+export const useModalContext = () => {
+  return useContext(ModalContext);
+}
+
+//B2: Tạo Provider 
 const ModalProvider = ({ children }) => {
   const [isShowing, setIsShowing] = useState(false);
   const [content, setContent] = useState();
