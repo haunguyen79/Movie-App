@@ -15,7 +15,7 @@ const Banner = ({
   releaseDate,
   point = 0,
   overview,
-  trailerVideoKey
+  trailerVideoKey,
 }) => {
   const { setIsShowing, setContent } = useModalContext();
 
@@ -58,6 +58,7 @@ const Banner = ({
               />
               Rating
             </div>
+
             <button
               onClick={() => {
                 setIsShowing(true);
