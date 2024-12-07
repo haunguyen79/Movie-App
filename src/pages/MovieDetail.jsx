@@ -127,6 +127,7 @@ const MovieDetail = () => {
             <RelatedMediaList
               mediaList={relatedMovie}
               isLoading={isRelatedMovieListLoading}
+              title= "More like this"
             />
           </div>
           <div className="flex-1">
