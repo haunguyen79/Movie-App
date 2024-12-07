@@ -7,9 +7,9 @@ const ModalContext = createContext();
 // eslint-disable-next-line react-refresh/only-export-components
 export const useModalContext = () => {
   return useContext(ModalContext);
-}
+};
 
-//B2: Tạo Provider 
+//B2: Tạo Provider
 const ModalProvider = ({ children }) => {
   const [isShowing, setIsShowing] = useState(false);
   const [content, setContent] = useState();
@@ -22,8 +22,13 @@ const ModalProvider = ({ children }) => {
     }
   }, [isShowing]);
 
+  const openPopup = (content) => {
+    setIsShowing(true);
+    setContent(content);
+  };
+
   return (
-    <ModalContext.Provider value={{setIsShowing, setContent}}>
+    <ModalContext.Provider value={{ openPopup }}>
       {children}
       {isShowing && (
         <div className="fixed inset-0">

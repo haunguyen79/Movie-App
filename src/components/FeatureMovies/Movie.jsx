@@ -14,7 +14,7 @@ const Movie = (props) => {
 
   // console.log(props.data?.backdrop_path);
 
-  const { setIsShowing, setContent } = useModalContext();
+  const { openPopup } = useModalContext();
 
   return (
     <div>
@@ -40,8 +40,7 @@ const Movie = (props) => {
           <div className="mt-4">
             <button
               onClick={() => {
-                setIsShowing(true);
-                setContent(
+                openPopup(
                   <iframe
                     title="Trailer"
                     src={`https://www.youtube.com/embed/${trailerVideoKey}`}
