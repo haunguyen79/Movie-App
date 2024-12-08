@@ -28,6 +28,18 @@ const router = createBrowserRouter([
       {
         path: "/people/:id",
         element: <PeoplePage />,
+        loader: async ({ params }) => {
+          const res = await fetch(
+            `https://api.themoviedb.org/3/person/${params.id}`,
+            {
+              headers: {
+                accept: "application/json",
+                Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
+              },
+            },
+          );
+          return res;
+        },
       },
     ],
   },

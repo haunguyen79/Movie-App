@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 const DEFAULT_HEADERS = {
   accept: "application/json",
-  Authorization:
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2OTlhYmI5NTI3M2IwNGE3MDc5YTQ1ODMyOWNmZmE4NCIsIm5iZiI6MTczMDI0OTkxNy40MjAxNDM2LCJzdWIiOiI2NzIxODM0NjgyNmZlNTc5OWNjNGExOTgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.zeTMNZgeFRbZ1q3UAHn-g7tlxwYpm53P1Fhn4spjQmY",
+  Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
 };
 
 export default function useFetch(

@@ -1,7 +1,12 @@
 import ImageComponent from "@components/Image";
 import RelatedMediaList from "@components/MediaDetail/RelatedMediaList";
+import { useLoaderData } from "react-router-dom";
 
 const PeoplePage = () => {
+  const data = useLoaderData();
+
+  console.log({ data });
+
   return (
     <div>
       <div className="container">
