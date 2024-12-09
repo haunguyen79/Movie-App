@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         element: <PeoplePage />,
         loader: async ({ params }) => {
           const res = await fetch(
-            `https://api.themoviedb.org/3/person/${params.id}`,
+            `https://api.themoviedb.org/3/person/${params.id}?append_to_response=combined_credits`,
             {
               headers: {
                 accept: "application/json",

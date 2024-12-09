@@ -2,58 +2,60 @@ import ImageComponent from "@components/Image";
 import RelatedMediaList from "@components/MediaDetail/RelatedMediaList";
 import { useLoaderData } from "react-router-dom";
 
+const GENDER_MAPPING = {
+  0: "Not set/ not specified",
+  1: "Female",
+  2: "Male",
+  3: "Non-binary",
+};
 const PeoplePage = () => {
-  const data = useLoaderData();
+  const peopleInfo = useLoaderData();
 
-  console.log({ data });
+  console.log({ peopleInfo });
 
   return (
-    <div>
+    <div className="bg-black text-white text-[1.2vw]">
       <div className="container">
         <div className="flex-1">
           <ImageComponent
-            src="https://image.tmdb.org/t/p/w600_and_h900_face/nqeMTAdJFsXmsVxN5Mb6gEQ8cI3.jpg"
+            src={`https://media.themoviedb.org/t/p/w600_and_h900_face${peopleInfo.profile_path}`}
             width={600}
             height={900}
             className="mb-6"
           />
 
           <div>
-            <p className="mb-6 text-lg font-bold">Personal Info</p>
+            <p className="mb-6 text-[1.3vw] font-bold">Personal Info</p>
             <div className="space-y-4">
               <div>
                 <p className="font-bold">Known For</p>
-                <p>Acting</p>
+                <p>{peopleInfo.known_for_department}</p>
               </div>
               <div>
                 <p className="font-bold">Gender</p>
-                <p>Male</p>
+                <p>{GENDER_MAPPING[peopleInfo.gender]}</p>
               </div>
               <div>
                 <p className="font-bold">Place of birth</p>
-                <p>NewYork - US</p>
+                <p>{peopleInfo.place_of_birth}</p>
               </div>
               <div>
                 <p className="font-bold">Birthday</p>
-                <p>Acting</p>
+                <p>{peopleInfo.birthday}</p>
               </div>
             </div>
           </div>
         </div>
         <div className="flex-[2]">
-          <p className="mb-6 text-2xl font-bold">Leo Messi</p>
+          <p className="mb-6 text-[2vw] font-bold">{peopleInfo.name}</p>
           <div className="mb-6">
-            <p className="mb-4 text-lg font-bold">Biography</p>
-            <p>
-              My favorite comedian is artist Xuan Bac, I was very impressed with
-              his natural and charming performance. Uncle Xuan Bac is not very
-              tall, has a balanced and healthy physique. With dark skin and
-              angular face, he looks very masculine. Your personality is very
-              rustic and simple. Off stage, it easy to meet him eating and
-              hanging out at popular places
-            </p>
+            <p className="mb-4 text-[1.4vw] font-bold">Biography</p>
+            <p className="whitespace-pre-line">{peopleInfo.biography}</p>
           </div>
-          <RelatedMediaList />
+          <RelatedMediaList
+            mediaList={peopleInfo.combined_credits?.cast || []}
+            title="Known For"
+          />
         </div>
       </div>
     </div>
