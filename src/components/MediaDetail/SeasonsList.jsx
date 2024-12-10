@@ -22,7 +22,10 @@ const SeasonsList = ({ seasons = [] }) => {
               height={195}
               width={130}
               className="h-[195px] w-[130px] max-w-screen-xl rounded-lg"
-              src={`https://media.themoviedb.org/t/p/w300${season.poster_path}`}
+              src={
+                season.poster_path &&
+                `https://media.themoviedb.org/t/p/w300${season.poster_path}`
+              }
             />
 
             <div className="space-y-1">
