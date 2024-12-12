@@ -3,14 +3,17 @@ import "./index.css";
 // import App from "./pages/HomePage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "@pages/RootLayout";
-import HomePage from "@pages/HomePage";
+// import HomePage from "@pages/HomePage";
 // import MovieDetail from "@pages/MovieDetail";
-import TVShowDetail from "@pages/TVShowDetail";
+// import TVShowDetail from "@pages/TVShowDetail";
 import ModalProvider from "@context/ModalProvider";
-import PeoplePage from "@pages/PeoplePage";
+// import PeoplePage from "@pages/PeoplePage";
 import { lazy } from "react";
 
 const MovieDetail = lazy(() => import("@pages/MovieDetail"));
+const TVShowDetail = lazy(() => import("@pages/TVShowDetail"));
+const HomePage = lazy(() => import("@pages/HomePage"));
+const PeoplePage = lazy(() => import("@pages/PeoplePage"));
 
 const router = createBrowserRouter([
   {
