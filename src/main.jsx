@@ -9,6 +9,7 @@ import RootLayout from "@pages/RootLayout";
 import ModalProvider from "@context/ModalProvider";
 // import PeoplePage from "@pages/PeoplePage";
 import { lazy } from "react";
+import SearchPage from "@pages/SearchPage";
 
 const MovieDetail = lazy(() => import("@pages/MovieDetail"));
 const TVShowDetail = lazy(() => import("@pages/TVShowDetail"));
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
           );
           return res;
         },
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
       },
     ],
   },
