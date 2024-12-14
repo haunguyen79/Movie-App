@@ -5,7 +5,13 @@ import GenresInput from "./FormInputs/GenresInput";
 import RatingInput from "./FormInputs/RatingInput";
 
 const SearchForm = () => {
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      mediaType: "movie",
+      genres: [],
+      rating: "All",
+    },
+  });
 
   const onSubmit = (data) => {
     console.log({ formData: data });
