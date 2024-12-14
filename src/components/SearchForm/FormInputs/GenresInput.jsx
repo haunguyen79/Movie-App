@@ -1,4 +1,5 @@
 import useFetch from "@hooks/useFetch";
+import { useEffect } from "react";
 import { useWatch } from "react-hook-form";
 
 const GenresInput = ({ control, onChange, value = [] }) => {
@@ -9,6 +10,11 @@ const GenresInput = ({ control, onChange, value = [] }) => {
   );
 
   console.log({ data, mediaType });
+
+  useEffect(() => {
+    onChange([])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[mediaType])
 
   return (
     <div className="flex flex-wrap gap-1">
