@@ -18,8 +18,8 @@ const SearchForm = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="rounded-lg border p-4 shadow-md">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* <label>Media Type</label> <br />
         <input type="radio" {...register("mediaType")} value="movie" />
         <label>Movie</label>
