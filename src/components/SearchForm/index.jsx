@@ -3,9 +3,10 @@ import FormField from "./FormField";
 import MediaTypeInput from "./FormInputs/MediaTypeInput";
 import GenresInput from "./FormInputs/GenresInput";
 import RatingInput from "./FormInputs/RatingInput";
+import { useEffect } from "react";
 
-const SearchForm = () => {
-  const { handleSubmit, control } = useForm({
+const SearchForm = ({ setSearchFormValue }) => {
+  const { handleSubmit, control, watch } = useForm({
     defaultValues: {
       mediaType: "movie",
       genres: [],
@@ -16,6 +17,14 @@ const SearchForm = () => {
   const onSubmit = (data) => {
     console.log({ formData: data });
   };
+
+  const formValues = watch();
+  console.log({ formValues });
+
+  useEffect(() => {
+    setSearchFormValue(formValues);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(formValues)]);
 
   return (
     <div className="rounded-lg border p-4 shadow-md">
