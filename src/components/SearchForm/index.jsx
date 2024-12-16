@@ -56,7 +56,6 @@ const SearchForm = ({ setSearchFormValue }) => {
           Component={RatingInput}
         />
 
-        <input type="submit"></input>
       </form>
     </div>
   );

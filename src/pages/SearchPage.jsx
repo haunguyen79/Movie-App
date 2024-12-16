@@ -1,3 +1,4 @@
+import RelatedMediaList from "@components/MediaDetail/RelatedMediaList";
 import SearchForm from "@components/SearchForm";
 import useFetch from "@hooks/useFetch";
 import { useState } from "react";
@@ -9,11 +10,16 @@ const SearchPage = () => {
     rating: "All",
   });
 
-  // const { data } = useFetch({
-  //   url: `/discover/movie`,
-  // });
+  const [minRating, maxRating] =
+    searchFormValue.rating === "All"
+      ? [0, 100]
+      : searchFormValue.rating.split("-");
 
-  console.log({searchFormValue})
+  const { data } = useFetch({
+    url: `/discover/${searchFormValue.mediaType}?sort_by=popularity.desc&with_genres=${searchFormValue.genres.join(",")}&vote_average.gte=${minRating / 10}&vote_average.lte=${maxRating / 10}`,
+  });
+
+  console.log({ searchFormValue });
 
   return (
     <div className="container flex-col">
@@ -22,7 +28,9 @@ const SearchPage = () => {
         <div className="flex-1">
           <SearchForm setSearchFormValue={setSearchFormValue} />
         </div>
-        <div className="flex-[3]"> Result </div>
+        <div className="flex-[3]">
+          <RelatedMediaList mediaList={data.results || []} />
+        </div>
       </div>
     </div>
   );
