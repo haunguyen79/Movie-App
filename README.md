@@ -1,6 +1,10 @@
 ### **Project Demo**: https://movie-app-test3.vercel.app/
 
 ---
+## Công nghệ sử dụng:
+### Front-end: ReactJS, TailwindCSS
+### API: The Movie Database API - TMDB
+### Công cụ hỗ trợ: Visual Studio Code, GitHub, Vercel (deploy)
 
 ## Các chức năng của trang web:
 
