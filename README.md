@@ -1,45 +1,50 @@
-### **Project Demo**: https://movie-app-test3.vercel.app/
+# 🎥 Movie App – Trải nghiệm điện ảnh trực tuyến
 
----
-### Công nghệ sử dụng:
-- Front-end: ReactJS, TailwindCSS
-- API: The Movie Database API - TMDB
-- Tool: Visual Studio Code, GitHub, Vercel (deploy)
+![ReactJS](https://img.shields.io/badge/React-282C34?logo=react&logoColor=61DAFB)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-282C34?logo=tailwind-css&logoColor=38B2AC)
+![TMDb](https://img.shields.io/badge/TMDB%20API-282C34?logo=themoviedatabase&logoColor=01d277)
+![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white)
 
-## Các chức năng của trang web:
-
-Giao diện trực quan: Thiết kế bắt mắt, bố cục rõ ràng, dễ tìm kiếm.
-
-### 1. Trang chủ
-- Banner quảng cáo: Hiển thị các phim mới, phim nổi bật.
-
-- Danh sách phim nổi bật: Hiển thị các bộ phim mới ra mắt, được yêu thích hoặc xếp hạng cao.
-
-- Danh mục theo thể loại: Phân loại phim theo thể loại (Movie, TvShow, v.v.).
-
-### 2. Tìm kiếm và lọc phim
-- Tìm kiếm, lọc phim: Lọc theo thể loại (hành động, tình cảm, kinh dị,...)
-
-- Tìm kiếm nâng cao: Kết hợp nhiều tiêu chí để tìm phim chính xác hơn.
-
-### 3. Trang thông tin phim
-- Thông tin chi tiết: Bao gồm mô tả, trailer, điểm rating, thể loại phim, diễn viên, đạo diễn và ngày phát hành phim.
-
-- Thông tin về: Quốc gia sản xuất, ngân sách sản xuất và doanh thu của bộ phim.
-
-- Danh sách tương tự: Gợi ý các phim cùng thể loại hoặc do cùng đạo diễn.
-
-### 4. Trang thông tin diễn viên
-- Thông tin chi tiết: Về cuộc đời, sự nghiệp và hiển thị danh sách các bộ phim đã từng tham gia.
-</br></br>
+## 🚀 Demo
+👉 [Trải nghiệm ngay tại đây](https://movie-app-test3.vercel.app/)
 
 ---
 
-# React + Vite
+## 🌟 Giới thiệu
+**Movie App** là một ứng dụng xem phim trực tuyến với giao diện hiện đại, mượt mà và thân thiện.  
+Dữ liệu được tích hợp từ **The Movie Database API (TMDb)**, mang đến cho bạn kho phim đa dạng từ bom tấn Hollywood đến TV Show hấp dẫn.  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ứng dụng tập trung vào **tốc độ, tính trực quan và trải nghiệm người dùng**, được thiết kế để bất kỳ ai cũng có thể tìm và theo dõi phim yêu thích chỉ trong vài cú click.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Công nghệ
+- ⚛️ **ReactJS** – Xây dựng giao diện nhanh chóng, component-based.  
+- 🎨 **TailwindCSS** – Thiết kế UI đẹp mắt, responsive trên mọi thiết bị.  
+- 🎬 **The Movie Database API (TMDb)** – Cung cấp dữ liệu phim chính xác & phong phú.  
+- ▲ **Vercel** – Deploy nhanh chóng, tối ưu hiệu năng.  
+
+---
+
+## ✨ Tính năng nổi bật
+
+### 🏠 Trang chủ
+- Banner nổi bật hiển thị phim mới & hot nhất.  
+- Danh sách phim được cập nhật liên tục theo xu hướng.  
+- Dễ dàng khám phá theo **thể loại** (Movie, TV Show, …).  
+
+### 🔍 Tìm kiếm & Lọc phim
+- Tìm kiếm thông minh theo từ khóa.  
+- Bộ lọc theo thể loại: hành động, tình cảm, kinh dị, …  
+- **Tìm kiếm nâng cao**: kết hợp nhiều tiêu chí cho kết quả chính xác.  
+
+### 📄 Trang chi tiết phim
+- Thông tin đầy đủ: mô tả, trailer, rating, ngày phát hành.  
+- Dữ liệu bổ sung: quốc gia sản xuất, ngân sách, doanh thu.  
+- Đề xuất phim tương tự theo **thể loại hoặc đạo diễn**.  
+
+### 👤 Trang diễn viên
+- Hồ sơ chi tiết về sự nghiệp và cuộc đời.  
+- Danh sách phim đã từng tham gia.  
+
+---
