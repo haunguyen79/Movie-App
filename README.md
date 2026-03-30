@@ -17,7 +17,7 @@
 
 ## 🚀 Demo
 
-👉 **[Trải nghiệm ngay tại đây](https://movie-app-test3.vercel.app/)**
+👉 **[Trải nghiệm ngay tại đây](https://movie-app-offical.vercel.app/)**
 
 ---
 
